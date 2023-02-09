@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "M1lai7RuXzC/aFzebF1cWoNbhJ8+RkdBy9M+YlIyhBirqlmqfWXX7UErSG4HPGtQNTTFUCqAo1Og9gwXXaXp+Q==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\91745\\Source\\Repos\\Mikealpha13\\myPhysio\\MyPhysio.Domain\\MyPhysio.Domain.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\91745\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

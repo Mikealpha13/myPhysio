@@ -1,0 +1,731 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyPhysioAPI</name>
+    </assembly>
+    <members>
+        <member name="M:MyPhysio.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Command.CustomerDetailCommand">
+            <summary>
+            tt
+            </summary>
+        </member>
+        <member name="F:MyPhysio.v1.Command.CustomerDetailCommand._customerRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Command.CustomerDetailCommand.#ctor(MyPhysio.v1.ViewModels.Request.CustomerDetailsRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="customerRequest"></param>
+        </member>
+        <member name="T:MyPhysio.v1.Contracts.IRequestProcessor`2">
+            <summary>
+            This class is used to process the model and loosely couple the model dependency
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="X"></typeparam>
+        </member>
+        <member name="M:MyPhysio.v1.Contracts.IRequestProcessor`2.ToExternalModel(`1)">
+            <summary>
+            Use to map the request view model to entity model
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Contracts.IResponseProcessor`2">
+            <summary>
+            This class is used to process the service/enity response to view model
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="X"></typeparam>
+        </member>
+        <member name="M:MyPhysio.v1.Contracts.IResponseProcessor`2.ToViewModel(`1)">
+            <summary>
+            Cast the external model to view model
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Controllers.ServiceController">
+            <summary>
+            Master API Controller
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.#ctor(MediatR.IMediator)">
+            <summary>
+            
+            </summary>
+            <param name="mediator"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.CustomerByPhone(System.String)">
+            <summary>
+            This endpoint is used to fetch the registered customer profiles
+            </summary>
+            <param name="phoneNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.CustomerBooking(System.String)">
+            <summary>
+            This endpoint is used to fetch the existing customer bookings
+            </summary>
+            <param name="phoneNumber"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.VerifyCustomer(System.String,System.String)">
+            <summary>
+            This endpoint is used to verify the customer by OTP
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.SendOTP(System.String)">
+            <summary>
+            This endpoint is used to sent  the OTP at customer registered mobile number
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.UpdateProfile">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.PaymentMethods">
+            <summary>
+            This method is used to fetch the enabled payment methods
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.GetProducts">
+            <summary>
+            This method is used to fetch the list of products.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.Booking">
+            <summary>
+            This method is used to fetch the list of products.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Controllers.ServiceController.Categories">
+            <summary>
+            This method is used to fetch the list of products.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Extensions.Apps.ApplicationExtensions">
+            <summary>
+            This class is used to configure the HTTPPipeline middleware
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Apps.ApplicationExtensions.ConfigureRouting(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            This method is created to configure the routing middleware
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Apps.ApplicationExtensions.ConfigureSwagger(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Mvc.ApiExplorer.IApiVersionDescriptionProvider)">
+            <summary>
+            This method is created to configure the swagger middleware
+            </summary>
+            <param name="app"></param>
+            <param name="provider"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Apps.ApplicationExtensions.ConfigureEndpoint(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            This method is used to configure the endpoint
+            </summary>
+            <param name="app"></param>
+        </member>
+        <member name="T:MyPhysio.v1.Extensions.Services.ServiceExtensions">
+            <summary>
+            This class is used as extension for services 
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterController(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the controller.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterHostedServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method regsiter the hosted services
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterMediator(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register mediator as services
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterCustomConfiguration(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterHealthCheckUI(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the health check in UI Framework
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterHealthCheck(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the Helath Check in Framework
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterFluentValidation(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the fluent validation in system.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterFilters(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the filter in the system
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterLogger(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            This method is used to register the logger in the system
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterSwagger(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the swagger in the system
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterAuthentication(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method is used to register the authorization pipleine
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Extensions.Services.ServiceExtensions.RegisterHttpClients(Microsoft.Extensions.DependencyInjection.IServiceCollection,Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            This method is used to create httpclientfactory at run time .
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Infrastructure.CircuitBreaker.RetryPolicies.GetRetryPolicy">
+            <summary>
+            Policy  when server is down and not reachable
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysio.v1.Infrastructure.CircuitBreaker.RetryPolicies.GetCircuitBreakerPolicy">
+            <summary>
+            Policy to break the circuit
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.DependencyContainer.APIModule">
+            <summary>
+            This class is used to register the dependencies of API 
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Infrastructure.DependencyContainer.APIModule.Load(Autofac.ContainerBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.DependencyContainer.DomainModule">
+            <summary>
+            This class is used to register the dependecies of Domain Library
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.DependencyContainer.InfrastructureModule">
+            <summary>
+            This class is used to register trhe dependencies of infrastruture 
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.Filters.AuthorizesAttribute">
+            <summary>
+            This class is used to inject the Authorization middleware in pipeline and validate the access
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.Filters.ExceptionFilter">
+            <summary>
+            This class is created for global exception handler
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.Filters.ValidateRequestAttribute">
+            <summary>
+            This class is used to configure the validation middleware in Http Pipeline
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.HealthChecks.MyPhysioHealthCheck">
+            <summary>
+            This class is used to implement the healthcheck
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.HostedServices.MyPhysioHostedServices">
+            <summary>
+            This  is  placeholder for executing hosted services
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.Infrastructure.Middlewares.ProfilingMiddleware">
+            <summary>
+            This class is injected in HTTP Request pipeline to act as a dispatcher
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Infrastructure.Middlewares.ProfilingMiddleware.#ctor(Microsoft.Extensions.Logging.ILogger{MyPhysio.v1.Infrastructure.Middlewares.ProfilingMiddleware},Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            
+            </summary>
+            <param name="logger"></param>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:MyPhysio.v1.Infrastructure.Middlewares.ProfilingMiddleware.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <param name="cancellationToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Processor.Response.CustomerPhoneResponseProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Processor.Response.CustomerPhoneResponseProcessor.ToViewModel(MyPhysio.Domain.ServiceModels.CustomerPhoneServiceModelResponse)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysio.v1.Validation.CustomerDetailRequestValidation">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysio.v1.Validation.CustomerDetailRequestValidation.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.ViewModels.Request.CustomerDetailsRequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysio.v1.ViewModels.Request.CustomerDetailsRequestViewModel.CustomerId">
+            <summary>
+            Customer Id 
+            </summary>
+        </member>
+        <member name="T:MyPhysio.v1.ViewModels.Response.CustomerDetailResponseViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Command.CustomerOrderCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MyPhysioAPI.v1.Command.CustomerOrderCommand.customerOrderRequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Command.CustomerOrderCommand.#ctor(MyPhysioAPI.v1.ViewModels.Request.CustomerOrderRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="customerOrderRequest"></param>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Command.CustomerPhoneCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MyPhysioAPI.v1.Command.CustomerPhoneCommand._customerPhoneRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Command.CustomerPhoneCommand.#ctor(MyPhysioAPI.v1.ViewModels.Request.CustomerPhoneRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="customerPhoneRequestViewModel"></param>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Command.OrderDetailCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MyPhysioAPI.v1.Command.OrderDetailCommand.OrderRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Command.OrderDetailCommand.#ctor(MyPhysioAPI.v1.ViewModels.Request.OrderRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="orderRequestViewModel"></param>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Command.PartialUpdateOrderCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MyPhysioAPI.v1.Command.PartialUpdateOrderCommand._partialUpdateRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Command.PartialUpdateOrderCommand.#ctor(MyPhysioAPI.v1.ViewModels.Request.PartialUpdateRequestViewModel)">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Command.UpdateOrderCommand">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MyPhysioAPI.v1.Command.UpdateOrderCommand._orderUpdateRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Command.UpdateOrderCommand.#ctor(MyPhysioAPI.v1.ViewModels.Request.OrderUpdateRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="orderUpdateRequest"></param>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Extensions.Datatypes.StringExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Extensions.Datatypes.StringExtensions.GetAccessToken(System.String,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="baseAddress"></param>
+            <param name="clientid"></param>
+            <param name="secret"></param>
+            <param name="endPoint"></param>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Extensions.Datatypes.StringExtensions.ValidateAccessToken(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="accessToken"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Extensions.Datatypes.StringExtensions.GetTokenClient(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="accessToken"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Processor.Request.OrderUpdateRequestProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Processor.Request.OrderUpdateRequestProcessor.ToExternalModel(MyPhysioAPI.v1.ViewModels.Request.OrderUpdateRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Processor.Request.PartialUpdateRequestProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Processor.Request.PartialUpdateRequestProcessor.ToExternalModel(MyPhysioAPI.v1.ViewModels.Request.PartialUpdateRequestViewModel)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Processor.Response.Master.CustomerOrderResponseProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Processor.Response.Master.CustomerOrderResponseProcessor.ToViewModel(MyPhysio.Domain.ServiceModels.CustomerOrderServiceModelResponse)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Processor.Response.Master.OrderUpdateResponseProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Processor.Response.Master.OrderUpdateResponseProcessor.ToViewModel(MyPhysio.Domain.ServiceModels.OrderUpdateResponseServiceModel)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Processor.Response.Master.PartialUpdateResponseProcessor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Validation.CustomerPhoneRequestValidator">
+            <summary>
+            Validation class for customer by phone request view model
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.CustomerPhoneRequestValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Validation.OrderRequestValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.OrderRequestValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.OrderRequestValidator.ValidateOrder(System.Collections.Generic.List{System.String})">
+            <summary>
+            
+            </summary>
+            <param name="orders"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.Validation.OrderUpdateRequestValidator">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.OrderUpdateRequestValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.OrderUpdateRequestValidator.ValidateDate(System.Nullable{System.DateTime})">
+            <summary>
+            
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.PartialUpdateRequestValidation.ValidFullFillmentId(System.String)">
+            <summary>
+            
+            </summary>
+            <param name="request"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.PartialUpdateRequestValidation.ValidateDate(System.Nullable{System.DateTime})">
+            <summary>
+            
+            </summary>
+            <param name="date"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyPhysioAPI.v1.Validation.PartialUpdateRequestValidation.ValidateStatus(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="status"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Request.CustomerOrderRequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.CustomerOrderRequestViewModel.customerID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Request.CustomerPhoneRequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.CustomerPhoneRequestViewModel.PhoneNumber">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Request.OrderRequestViewModel">
+            <summary>
+            This class is created to fetch the order details
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.OrderRequestViewModel.Orders">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.OrderRequestViewModel.ScheduleDates">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Request.OrderUpdateRequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.OrderUpdateRequestViewModel.deliveryDate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.OrderUpdateRequestViewModel.deliveryInstruction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.OrderUpdateRequestViewModel.OrderId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Request.PartialUpdateRequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.PartialUpdateRequestViewModel.status">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.PartialUpdateRequestViewModel.Instruction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.PartialUpdateRequestViewModel.FullfillmentId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Request.RequestViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.RequestViewModel.Client">
+            <summary>
+            Client Indicator
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Request.RequestViewModel.RequestID">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.CustomerOrderResponseViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.CustomerOrderResponseViewModel.Orders">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.CustomerPhoneResponseViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.CustomerDetails">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.CustomerDetails.customerId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.OrderResponseViewModel">
+            <summary>
+            This class is used to fetch the order details
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.OrderResponseViewModel.response">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.OrderUpdateResponseViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.PartialUpdateResponseViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MyPhysioAPI.v1.ViewModels.Response.ResponseViewModel">
+            <summary>
+            This is base clas for response in MyPhysio api
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.ResponseViewModel.RequestId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.ResponseViewModel.Success">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.ResponseViewModel.StatusCode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MyPhysioAPI.v1.ViewModels.Response.ResponseViewModel.ErrorMessage">
+            <summary>
+            
+            </summary>
+        </member>
+    </members>
+</doc>

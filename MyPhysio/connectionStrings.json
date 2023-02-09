@@ -1,0 +1,13 @@
+{
+  "ConnectionStrings": [
+    {
+      "Name": "TDG",
+      "connectionString": "TDGTest"
+    },
+    {
+      "Name": "DSG",
+      "connectionString": "DSGTest"
+    }
+
+  ]
+}

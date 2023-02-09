@@ -1,0 +1,15 @@
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\bin\Debug\net5.0\EBridge.Infrastructure.deps.json
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\bin\Debug\net5.0\EBridge.Infrastructure.dll
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\bin\Debug\net5.0\ref\EBridge.Infrastructure.dll
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\bin\Debug\net5.0\EBridge.Infrastructure.pdb
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\bin\Debug\net5.0\EBridge.Domain.dll
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\bin\Debug\net5.0\EBridge.Domain.pdb
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.AssemblyInfo.cs
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.csproj.CopyComplete
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.dll
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\ref\EBridge.Infrastructure.dll
+C:\Users\lenovo\Source\Repos\EbridgeMicroservice\EBridge.Infrastructure\obj\Debug\net5.0\EBridge.Infrastructure.pdb
