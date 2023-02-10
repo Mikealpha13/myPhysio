@@ -10,11 +10,8 @@ namespace MyPhysio.Domain.Enums
     public enum HTTPClients
     {
         //TODO -Rename SToris
-        [Display(Name="TDGStori API")]
-        TDGStori,
-        [Display(Name = "DSGStori API")]
-        DSGStori,
-        [Display(Name = "Podium API")]
-        PodiumStori
+        [Display(Name="TwilioAPI")]
+        Twilio,
+        
     }
 }

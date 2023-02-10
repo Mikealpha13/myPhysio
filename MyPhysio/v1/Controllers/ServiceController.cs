@@ -14,6 +14,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using MyPhysio.Domain.Configuration;
+using Twilio;
+using Twilio.Rest.Verify.V2.Service;
+using Microsoft.Extensions.Configuration;
 
 namespace MyPhysio.v1.Controllers
 {
@@ -32,6 +35,7 @@ namespace MyPhysio.v1.Controllers
         private readonly IMediator _mediator;
         private readonly IOptions<ProductDataSource> _products;
         private readonly IOptions<PaymentMethodsDataSource> _paymentmethod;
+        private readonly IConfiguration _configuration;
 
         /// <summary>
         /// 
@@ -39,11 +43,13 @@ namespace MyPhysio.v1.Controllers
         /// <param name="mediator"></param>
         /// <param name="products"></param>
         /// <param name="paymentMethods"></param>
-        public ServiceController(IMediator mediator, IOptions<ProductDataSource> products, IOptions<PaymentMethodsDataSource> paymentMethods)
+        /// <param name="configuration"></param>
+        public ServiceController(IMediator mediator, IOptions<ProductDataSource> products, IOptions<PaymentMethodsDataSource> paymentMethods,IConfiguration configuration)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _products = products ?? throw new ArgumentNullException(nameof(products));
             _paymentmethod = paymentMethods ?? throw new ArgumentNullException(nameof(paymentMethods));
+            _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
         }
 
         /// <summary>
@@ -92,7 +98,32 @@ namespace MyPhysio.v1.Controllers
         [HttpGet("SendOTP/{phoneNumber}")]
         public async Task<IActionResult> SendOTP(string phoneNumber)
         {
-            return Ok(true);
+
+            try
+            {
+                string accountSid = _configuration.GetSection("OTPService:accountID").Value;
+                string authToken = _configuration.GetSection("OTPService:accountToken").Value;
+
+                TwilioClient.Init(accountSid, authToken);
+
+                var smsverification = VerificationResource.Create(
+                    to: $"+91{phoneNumber}",
+                    channel: "sms",
+                    pathServiceSid: _configuration.GetSection("OTPService:serviceID").Value
+                );
+               // var whatsappVerification = VerificationResource.Create(
+               //    to: $"+91{phoneNumber}",
+               //    channel: "whatsapp",
+               //    pathServiceSid: _configuration.GetSection("OTPService:serviceID").Value
+               //);
+
+                return Ok(true);
+            }
+            catch (Exception)
+            {
+
+                return Ok(false);
+            }
         }
         /// <summary>
         /// 

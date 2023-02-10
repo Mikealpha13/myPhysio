@@ -41,7 +41,7 @@ namespace MyPhysio
             services.AddSingleton<AccessToken>();
             services.RegisterLogger(Configuration);
             services.RegisterFilters();
-            //services.RegisterHttpClients(Configuration);
+           //services.RegisterHttpClients(Configuration);
             services.RegisterController();
             //services.RegisterHostedServices();
             services.RegisterMediator();

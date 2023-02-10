@@ -216,13 +216,13 @@ namespace MyPhysio.v1.Extensions.Services
         public static void RegisterHttpClients(this IServiceCollection services,IConfiguration configuration)
         {
             #region TDG Client
-            string baseAddress = configuration.GetSection("Storis:BaseUrl").Value;
+            string baseAddress = configuration.GetSection("TwilioAPI:BaseUrl").Value;
             
             string endpoint = configuration.GetSection("Storis:AccessToken").Value;            
 
             var accessToken = baseAddress.GetAccessToken(configuration.GetSection("Storis:TDG:ClientId").Value, configuration.GetSection("Storis:TDG:Secret").Value, endpoint);
 
-            services.AddHttpClient(HTTPClients.TDGStori.ToString(), x =>
+            services.AddHttpClient(HTTPClients.Twilio.ToString(), x =>
              {
                  x.BaseAddress = new Uri(baseAddress);
 
@@ -232,20 +232,7 @@ namespace MyPhysio.v1.Extensions.Services
             #endregion
 
 
-            #region DSG CLient
-            string DSGbaseAddress = configuration.GetSection("Storis:BaseUrl").Value;            
-
-            var DSGaccessToken = DSGbaseAddress.GetAccessToken(configuration.GetSection("Storis:DSG:ClientId").Value, configuration.GetSection("Storis:DSG:Secret").Value, endpoint);
-           
-            services.AddHttpClient(HTTPClients.DSGStori.ToString(), x =>
-            {
-                x.BaseAddress = new Uri(DSGbaseAddress);
-
-                x.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",DSGaccessToken);
-                x.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            }).AddPolicyHandler(RetryPolicies.GetRetryPolicy()).AddHttpMessageHandler<ProfilingMiddleware>();
-
-            #endregion
+            
 
             services.BuildServiceProvider();
 
