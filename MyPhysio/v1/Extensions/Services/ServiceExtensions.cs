@@ -76,6 +76,8 @@ namespace MyPhysio.v1.Extensions.Services
         {
 
             services.Configure<ConnectionDataSource>(configuration);
+            services.Configure<ProductDataSource>(configuration);
+            services.Configure<PaymentMethodsDataSource>(configuration);
         }
 
         /// <summary>

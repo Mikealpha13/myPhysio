@@ -12,6 +12,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Options;
+using MyPhysio.Domain.Configuration;
 
 namespace MyPhysio.v1.Controllers
 {
@@ -28,14 +30,20 @@ namespace MyPhysio.v1.Controllers
     {
 
         private readonly IMediator _mediator;
+        private readonly IOptions<ProductDataSource> _products;
+        private readonly IOptions<PaymentMethodsDataSource> _paymentmethod;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="mediator"></param>
-        public ServiceController(IMediator mediator)
+        /// <param name="products"></param>
+        /// <param name="paymentMethods"></param>
+        public ServiceController(IMediator mediator, IOptions<ProductDataSource> products, IOptions<PaymentMethodsDataSource> paymentMethods)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+            _products = products ?? throw new ArgumentNullException(nameof(products));
+            _paymentmethod = paymentMethods ?? throw new ArgumentNullException(nameof(paymentMethods));
         }
 
         /// <summary>
@@ -105,7 +113,7 @@ namespace MyPhysio.v1.Controllers
         [HttpGet("PaymentMethods")]
         public async Task<IActionResult> PaymentMethods()
         {
-            return Ok();
+            return Ok(_paymentmethod.Value.paymentMethods.ToList());
         }
 
         /// <summary>
@@ -115,7 +123,8 @@ namespace MyPhysio.v1.Controllers
         [HttpGet("Products")]
         public async Task<IActionResult> GetProducts()
         {
-            return Ok();
+
+            return Ok(_products.Value.Products.ToList());
         }
 
         /// <summary>

@@ -1,0 +1,32 @@
+{
+  "paymentMethods": [
+    {
+      "modeId": "1",
+      "paymentmode": "Credit Card",
+      "modeicon": "creditcard",
+      "iconpath": "/images/payment/creditcard",
+      "active": "false"
+    },
+    {
+      "modeId": "2",
+      "paymentmode": "Netbanking",
+      "modeicon": "netbanking",
+      "iconpath": "/images/payment/netbanking",
+      "active": "false"
+    },
+    {
+      "modeId": "3",
+      "paymentmode": "UPI",
+      "modeicon": "upipayment",
+      "iconpath": "/images/payment/upipayment",
+      "active": "false"
+    },
+    {
+      "modeId": "4",
+      "paymentmode": "Cash",
+      "modeicon": "cash",
+      "iconpath": "/images/payment/upipayment",
+      "active": "true"
+    }
+  ]
+}

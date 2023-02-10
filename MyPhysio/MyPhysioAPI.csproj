@@ -18,6 +18,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="PaymentMethods.json" />
+    <Content Remove="Product.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="PaymentMethods.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Product.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="v1\Handlers\" />
     <Folder Include="v2\" />
   </ItemGroup>

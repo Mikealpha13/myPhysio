@@ -32,8 +32,10 @@ namespace MyPhysio
             .ConfigureAppConfiguration((hostContext,config)=> {
                 var env = hostContext.HostingEnvironment;
                 config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false, reloadOnChange: true)
-                .AddJsonFile($"connectionStrings.json", optional: true, reloadOnChange: true);
-            
+                .AddJsonFile($"connectionStrings.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"Product.json", optional: true, reloadOnChange: true)
+                .AddJsonFile($"PaymentMethods.json", optional: true, reloadOnChange: true);
+
             }).UseSerilog()
             .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder =>
