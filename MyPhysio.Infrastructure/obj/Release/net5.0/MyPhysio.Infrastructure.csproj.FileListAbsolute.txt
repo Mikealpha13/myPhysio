@@ -1,0 +1,15 @@
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\bin\Release\net5.0\MyPhysio.Infrastructure.deps.json
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\bin\Release\net5.0\MyPhysio.Infrastructure.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\bin\Release\net5.0\ref\MyPhysio.Infrastructure.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\bin\Release\net5.0\MyPhysio.Infrastructure.pdb
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\bin\Release\net5.0\MyPhysio.Domain.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\bin\Release\net5.0\MyPhysio.Domain.pdb
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.AssemblyInfo.cs
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.csproj.CopyComplete
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\ref\MyPhysio.Infrastructure.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Infrastructure\obj\Release\net5.0\MyPhysio.Infrastructure.pdb

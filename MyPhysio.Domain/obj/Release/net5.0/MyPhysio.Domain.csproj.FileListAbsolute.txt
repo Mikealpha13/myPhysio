@@ -1,0 +1,12 @@
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\bin\Release\net5.0\MyPhysio.Domain.deps.json
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\bin\Release\net5.0\MyPhysio.Domain.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\bin\Release\net5.0\ref\MyPhysio.Domain.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\bin\Release\net5.0\MyPhysio.Domain.pdb
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.csproj.AssemblyReference.cache
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.AssemblyInfoInputs.cache
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.AssemblyInfo.cs
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.csproj.CoreCompileInputs.cache
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\ref\MyPhysio.Domain.dll
+C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Release\net5.0\MyPhysio.Domain.pdb
