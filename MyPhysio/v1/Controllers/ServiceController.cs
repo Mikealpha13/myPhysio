@@ -77,7 +77,16 @@ namespace MyPhysio.v1.Controllers
         [HttpGet("GetCustomer/{phoneNumber}")]
         public async Task<IActionResult> CustomerByPhone(string phoneNumber)
         {
-            return Ok();
+            try
+            {
+                var container = ContainerClient();
+                ItemResponse<CustomerDetails> response = await container.ReadItemAsync<CustomerDetails>(phoneNumber, new PartitionKey(phoneNumber));
+                return Ok(response.Resource);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         /// <summary>
