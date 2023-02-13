@@ -16,6 +16,8 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Azure.Cosmos;
+using MyPhysio.Domain.EntityModels;
 
 namespace MyPhysio.v1.Controllers
 {
@@ -35,6 +37,17 @@ namespace MyPhysio.v1.Controllers
         private readonly IOptions<ProductDataSource> _products;
         private readonly IOptions<PaymentMethodsDataSource> _paymentmethod;
         private readonly IConfiguration _configuration;
+        private readonly string CosmosDBAccountUri ;
+        private readonly string CosmosDBAccountPrimaryKey ;
+        private readonly string CosmosDbName ;
+        private readonly string CosmosDbContainerName;
+   
+        private Container ContainerClient()
+        {
+            CosmosClient cosmosDbClient = new CosmosClient(CosmosDBAccountUri, CosmosDBAccountPrimaryKey);
+            Container containerClient = cosmosDbClient.GetContainer(CosmosDbName, CosmosDbContainerName);
+            return containerClient;
+        }
 
         /// <summary>
         /// 
@@ -49,6 +62,11 @@ namespace MyPhysio.v1.Controllers
             _products = products ?? throw new ArgumentNullException(nameof(products));
             _paymentmethod = paymentMethods ?? throw new ArgumentNullException(nameof(paymentMethods));
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            CosmosDBAccountUri = _configuration.GetSection("CosmosDB:AccountUrl").Value;
+            CosmosDBAccountPrimaryKey = _configuration.GetSection("CosmosDB:AuthKey").Value;
+            CosmosDbName = _configuration.GetSection("CosmosDB:DatabseId").Value;
+            CosmosDbContainerName = _configuration.GetSection("CosmosDB:ContainerName").Value;
+
         }
 
         /// <summary>
@@ -156,16 +174,61 @@ namespace MyPhysio.v1.Controllers
                 return Ok(false);
             }
         }
+
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="request"></param>
+        /// <param name="customerDetails"></param>
         /// <returns></returns>
-        [HttpPost("UpdateProfile")]
+        [HttpPost("UpdateCustomer")]
         [ValidateRequest]
-        public async Task<IActionResult> UpdateProfile()
+        public async Task<IActionResult> UpdateCustomer([FromBody]CustomerDetails customerDetails)
         {
-            return Ok();
+            try
+            {
+                var container = ContainerClient();
+                ItemResponse<CustomerDetails> res = await container.ReadItemAsync<CustomerDetails>(customerDetails.id, new PartitionKey(customerDetails.id));
+                //Get Existing Item
+                var existingItem = res.Resource;
+                //Replace existing item values with new values
+                existingItem.firstname = customerDetails.firstname;
+                existingItem.lastname = customerDetails.lastname;
+                existingItem.address = customerDetails.address;
+                existingItem.dob = customerDetails.dob;
+                existingItem.street = customerDetails.street;
+                existingItem.emailid = customerDetails.emailid;
+                existingItem.gender = customerDetails.gender;
+                existingItem.pincode = customerDetails.pincode;
+                var updateRes = await container.ReplaceItemAsync(existingItem, customerDetails.id, new PartitionKey(customerDetails.id));
+                return Ok(updateRes.Resource);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="customerRequest"></param>
+        /// <returns></returns>
+        [HttpPost("CreateCustomer")]
+        [ValidateRequest]
+        public async Task<IActionResult> RegisterCustomer([FromBody] CustomerDetails customerRequest)
+        {
+            try
+            {
+            
+                var container = ContainerClient();
+                var response = await container.CreateItemAsync(customerRequest, new PartitionKey(customerRequest.id));
+                return Ok(true);
+            }
+            catch (Exception ex)
+            {
+                return Ok(false);
+            }
+         
         }
 
         /// <summary>
