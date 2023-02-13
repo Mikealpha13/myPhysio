@@ -1,22 +1,21 @@
-﻿using MyPhysio.Domain.Enums;
-using MyPhysio.v1.Command;
-using MyPhysio.v1.Infrastructure.Filters;
-using MyPhysio.v1.ViewModels.Request;
-using MyPhysioAPI.v1.Command;
-using MyPhysioAPI.v1.ViewModels.Request;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
+using MyPhysio.Domain.Configuration;
+using MyPhysio.Domain.ServiceModels.Response;
+using MyPhysio.v1.Infrastructure.Filters;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Options;
-using MyPhysio.Domain.Configuration;
-using Twilio;
-using Twilio.Rest.Verify.V2.Service;
-using Microsoft.Extensions.Configuration;
 
 namespace MyPhysio.v1.Controllers
 {
@@ -44,7 +43,7 @@ namespace MyPhysio.v1.Controllers
         /// <param name="products"></param>
         /// <param name="paymentMethods"></param>
         /// <param name="configuration"></param>
-        public ServiceController(IMediator mediator, IOptions<ProductDataSource> products, IOptions<PaymentMethodsDataSource> paymentMethods,IConfiguration configuration)
+        public ServiceController(IMediator mediator, IOptions<ProductDataSource> products, IOptions<PaymentMethodsDataSource> paymentMethods, IConfiguration configuration)
         {
             _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
             _products = products ?? throw new ArgumentNullException(nameof(products));
@@ -84,11 +83,42 @@ namespace MyPhysio.v1.Controllers
         [ValidateRequest]
         public async Task<IActionResult> VerifyCustomer(string phoneNumber, string code)
         {
-            if (code.Equals("0995") && phoneNumber.Equals("8888888888"))
+            try
             {
-                return Ok(true);
+                string userName = _configuration.GetSection("OTPService:userName").Value;
+                string password = _configuration.GetSection("OTPService:password").Value;
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                    AuthenticationSchemes.Basic.ToString(),
+                    Convert.ToBase64String(Encoding.ASCII.GetBytes($"{userName}:{password}"))
+                    );
+                    var pairs = new List<KeyValuePair<string, string>>
+                  {
+                    new KeyValuePair<string, string>("To",  $"+91{phoneNumber}"),
+                    new KeyValuePair<string, string>("Code",  code),
+                  };
+                    var content = new FormUrlEncodedContent(pairs);
+                    var response = await httpClient.PostAsync(_configuration.GetSection("OTPService:validateotpendpoint").Value, content);
+                    response.EnsureSuccessStatusCode();
+                    var jsonResult = await response.Content.ReadAsStringAsync();
+                    var result = JsonConvert.DeserializeObject<ValidateOTPServiceResponseModel>(jsonResult);
+                    if (
+                        result.status.ToLower() == "approved" && 
+                        result.valid.ToLower() == "true" && 
+                        result.to == ($"+91{phoneNumber}")
+                        )
+                        return Ok(true);
+                    else
+                        return Ok(false);
+                }
+                
             }
-            return Ok(false);
+            catch (Exception ex)
+            {
+                return Ok(false);
+            }
+           
         }
 
         /// <summary>
@@ -101,27 +131,28 @@ namespace MyPhysio.v1.Controllers
 
             try
             {
-                string accountSid = _configuration.GetSection("OTPService:accountID").Value;
-                string authToken = _configuration.GetSection("OTPService:accountToken").Value;
-
-                TwilioClient.Init(accountSid, authToken);
-
-                var smsverification = VerificationResource.Create(
-                    to: $"+91{phoneNumber}",
-                    channel: "sms",
-                    pathServiceSid: _configuration.GetSection("OTPService:serviceID").Value
-                );
-               // var whatsappVerification = VerificationResource.Create(
-               //    to: $"+91{phoneNumber}",
-               //    channel: "whatsapp",
-               //    pathServiceSid: _configuration.GetSection("OTPService:serviceID").Value
-               //);
-
+                string userName = _configuration.GetSection("OTPService:userName").Value;
+                string password = _configuration.GetSection("OTPService:password").Value;
+                using (var httpClient = new HttpClient())
+                {
+                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                    AuthenticationSchemes.Basic.ToString(),
+                    Convert.ToBase64String(Encoding.ASCII.GetBytes($"{userName}:{password}"))
+                    );
+                  var pairs = new List<KeyValuePair<string, string>>
+                  {
+                    new KeyValuePair<string, string>("To",  $"+91{phoneNumber}"),
+                    new KeyValuePair<string, string>("Channel",  "sms"),
+                  };
+                  var content = new FormUrlEncodedContent(pairs);
+                  var response = await httpClient.PostAsync(_configuration.GetSection("OTPService:baseAddress").Value, content);
+                  response.EnsureSuccessStatusCode();
+                  var result = await response.Content.ReadAsStringAsync();
+                }
                 return Ok(true);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
                 return Ok(false);
             }
         }

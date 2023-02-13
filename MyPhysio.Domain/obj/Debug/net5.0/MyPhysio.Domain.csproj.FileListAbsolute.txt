@@ -21,4 +21,3 @@ C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Debug\net5.
 C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Debug\net5.0\MyPhysio.Domain.dll
 C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Debug\net5.0\ref\MyPhysio.Domain.dll
 C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Debug\net5.0\MyPhysio.Domain.pdb
-C:\Users\91745\Source\Repos\Mikealpha13\myPhysio\MyPhysio.Domain\obj\Debug\net5.0\MyPhysio.Domain.csproj.AssemblyReference.cache

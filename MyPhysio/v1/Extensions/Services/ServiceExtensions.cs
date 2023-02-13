@@ -27,6 +27,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
+using System.Net;
 
 namespace MyPhysio.v1.Extensions.Services
 {
@@ -216,17 +217,16 @@ namespace MyPhysio.v1.Extensions.Services
         public static void RegisterHttpClients(this IServiceCollection services,IConfiguration configuration)
         {
             #region TDG Client
-            string baseAddress = configuration.GetSection("TwilioAPI:BaseUrl").Value;
-            
-            string endpoint = configuration.GetSection("Storis:AccessToken").Value;            
-
-            var accessToken = baseAddress.GetAccessToken(configuration.GetSection("Storis:TDG:ClientId").Value, configuration.GetSection("Storis:TDG:Secret").Value, endpoint);
+            string userName = configuration.GetSection("TwilioAPI:accountID").Value;
+            string baseAddress = configuration.GetSection("TwilioAPI:baseAddress").Value;            
+            string password = configuration.GetSection("Storis:accountToken").Value;            
+      
 
             services.AddHttpClient(HTTPClients.Twilio.ToString(), x =>
              {
                  x.BaseAddress = new Uri(baseAddress);
 
-                 x.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer",accessToken);
+                 x.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(AuthenticationSchemes.Basic.ToString(), Convert.ToBase64String(Encoding.ASCII.GetBytes($"{userName}:{password}")));
                  x.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
              }).AddPolicyHandler(RetryPolicies.GetRetryPolicy()).AddHttpMessageHandler<ProfilingMiddleware>(); 
             #endregion
