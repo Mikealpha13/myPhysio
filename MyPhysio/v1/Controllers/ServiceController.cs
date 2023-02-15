@@ -158,24 +158,24 @@ namespace MyPhysio.v1.Controllers
 
             try
             {
-                string userName = _configuration.GetSection("OTPService:userName").Value;
-                string password = _configuration.GetSection("OTPService:password").Value;
-                using (var httpClient = new HttpClient())
-                {
-                    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
-                    AuthenticationSchemes.Basic.ToString(),
-                    Convert.ToBase64String(Encoding.ASCII.GetBytes($"{userName}:{password}"))
-                    );
-                  var pairs = new List<KeyValuePair<string, string>>
-                  {
-                    new KeyValuePair<string, string>("To",  $"+91{phoneNumber}"),
-                    new KeyValuePair<string, string>("Channel",  "sms"),
-                  };
-                  var content = new FormUrlEncodedContent(pairs);
-                  var response = await httpClient.PostAsync(_configuration.GetSection("OTPService:baseAddress").Value, content);
-                  response.EnsureSuccessStatusCode();
-                  var result = await response.Content.ReadAsStringAsync();
-                }
+                //string userName = _configuration.GetSection("OTPService:userName").Value;
+                //string password = _configuration.GetSection("OTPService:password").Value;
+                //using (var httpClient = new HttpClient())
+                //{
+                //    httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(
+                //    AuthenticationSchemes.Basic.ToString(),
+                //    Convert.ToBase64String(Encoding.ASCII.GetBytes($"{userName}:{password}"))
+                //    );
+                //  var pairs = new List<KeyValuePair<string, string>>
+                //  {
+                //    new KeyValuePair<string, string>("To",  $"+91{phoneNumber}"),
+                //    new KeyValuePair<string, string>("Channel",  "sms"),
+                //  };
+                //  var content = new FormUrlEncodedContent(pairs);
+                //  var response = await httpClient.PostAsync(_configuration.GetSection("OTPService:baseAddress").Value, content);
+                //  response.EnsureSuccessStatusCode();
+                //  var result = await response.Content.ReadAsStringAsync();
+                //}
                 return Ok(true);
             }
             catch (Exception ex)
